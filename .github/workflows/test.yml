@@ -6,7 +6,7 @@ jobs:
     steps:
     - name: Print greeting
       run: |
-      echo "hello world"
-      echo "Welcome to the world of github actions"
+        echo "hello world"
+        echo "Welcome to the world of github actions"
       
     
