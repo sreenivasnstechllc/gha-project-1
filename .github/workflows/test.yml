@@ -1,12 +1,25 @@
 name: firstworkflow
 on: workflow_dispatch
 jobs:
-  first-job:
+  deployosupdate:
     runs-on: ubuntu-latest
     steps:
-    - name: Print greeting
+    - name: install update
+      run: sudo apt update
+  deploynginx:
+    runs-on: ubuntu-latest
+    needs: deployosupdate
+    steps:
+    - name: install nginx
       run: |
-        echo "hello world"
-        echo "Welcome to the world of github actions"
+        sudo apt install -y nginx
+        sudo systemctl start nginx
+        sudo systemctl enable nginx
+    - name: verify nginx installation
+      run: systemctl status nginx
+      
+
+
       
     
+  
